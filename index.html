@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CRHLCK9L82"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CRHLCK9L82');
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -420,8 +429,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   document.querySelectorAll('#cta-principal, .cta-principal').forEach(function(boton){
     boton.addEventListener('click', function(){
       var seccion = boton.closest('section');
-      window.dataLayer.push({
-        event: 'clic_cta_principal',
+      gtag('event', 'clic_cta_principal', {
         ubicacion: seccion ? seccion.id : 'sin_seccion'
       });
     });
