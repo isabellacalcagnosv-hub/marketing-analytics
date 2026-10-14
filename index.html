@@ -424,13 +424,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   document.querySelectorAll('.revelar').forEach(el => io ? io.observe(el) : el.classList.add('visible'));
 </script>
 <script>
-  // ---------- Medición: clic en el CTA principal ----------
-  window.dataLayer = window.dataLayer || [];
-  document.querySelectorAll('#cta-principal, .cta-principal').forEach(function(boton){
-    boton.addEventListener('click', function(){
+  // Envía el evento clic_cta_principal cuando el visitante hace clic en el CTA
+  document.querySelectorAll('#cta-principal, .cta-principal').forEach(function (boton) {
+    boton.addEventListener('click', function () {
       var seccion = boton.closest('section');
       gtag('event', 'clic_cta_principal', {
-        ubicacion: seccion ? seccion.id : 'sin_seccion'
+        ubicacion: seccion && seccion.id ? seccion.id : 'sin_seccion'
       });
     });
   });
