@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N7DXX9QG');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotify · Trae tu música</title>
+<meta name="description" content="Trae tus listas desde tu app favorita, escucha sin límites con una sola suscripción y obtén 3 meses gratis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde:#1ed760;
+    --verde-osc:#14a84a;
+    --negro:#0a0a0a;
+    --negro-2:#141414;
+    --negro-3:#1f1f1f;
+    --texto:#f5f5f5;
+    --texto-2:#a7a7a7;
+    --borde:#2a2a2a;
+    --radio:18px;
+    --display:'Unbounded',system-ui,sans-serif;
+    --cuerpo:'DM Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--negro);color:var(--texto);font-family:var(--cuerpo);line-height:1.55;overflow-x:hidden}
+  a{color:inherit}
+  .contenedor{width:min(1120px,100% - 32px);margin-inline:auto}
+  .ejemplo{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--negro);background:#ffd84d;padding:2px 8px;border-radius:6px;vertical-align:middle}
+
+  /* ---------- Botones ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font-family:var(--cuerpo);font-weight:700;font-size:1rem;text-decoration:none;border-radius:999px;padding:16px 30px;border:2px solid transparent;cursor:pointer;transition:transform .2s ease,background .2s ease,border-color .2s ease}
+  .btn:hover{transform:translateY(-2px) scale(1.02)}
+  .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .btn-primario{background:var(--verde);color:var(--negro)}
+  .btn-primario:hover{background:#3be477}
+  .btn-secundario{background:transparent;color:var(--texto);border-color:var(--texto)}
+  .btn-secundario:hover{border-color:var(--verde);color:var(--verde)}
+  .flecha{transition:transform .2s ease}
+  .btn:hover .flecha{transform:translateX(4px)}
+
+  /* ---------- Header: búsqueda, logo, secciones ---------- */
+  header{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--borde)}
+  .busqueda-fila{display:flex;justify-content:flex-end;padding-top:12px}
+  .busqueda{display:flex;align-items:center;gap:8px;width:min(420px,100%);background:var(--negro-3);border:1px solid var(--borde);border-radius:999px;padding:6px 6px 6px 16px;transition:border-color .2s}
+  .busqueda:focus-within{border-color:var(--verde)}
+  .busqueda svg{flex:none;color:var(--texto-2)}
+  .busqueda input{flex:1;min-width:0;background:none;border:0;color:var(--texto);font:inherit;font-size:.95rem;outline:none}
+  .busqueda input::placeholder{color:var(--texto-2)}
+  .busqueda button{background:var(--verde);color:var(--negro);border:0;border-radius:999px;font:inherit;font-weight:700;font-size:.85rem;padding:8px 14px;cursor:pointer}
+  .marca-fila{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.45rem;letter-spacing:-.02em}
+  .logo-icono{width:40px;height:40px;border-radius:50%;background:var(--verde);display:grid;place-items:center}
+  .logo-icono span{display:block;width:4px;margin:0 1.5px;background:var(--negro);border-radius:2px;animation:eq 1s ease-in-out infinite alternate}
+  .logo-icono div{display:flex;align-items:flex-end;height:18px}
+  .logo-icono span:nth-child(1){height:8px;animation-delay:-.2s}
+  .logo-icono span:nth-child(2){height:16px;animation-delay:-.5s}
+  .logo-icono span:nth-child(3){height:11px;animation-delay:-.8s}
+  @keyframes eq{to{height:4px}}
+  nav ul{display:flex;gap:4px;list-style:none;overflow-x:auto;scrollbar-width:none}
+  nav ul::-webkit-scrollbar{display:none}
+  nav a{display:block;padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:500;color:var(--texto-2);white-space:nowrap;transition:background .2s,color .2s}
+  nav a:hover,nav a:focus-visible{background:var(--negro-3);color:var(--texto);outline:none}
+
+  /* ---------- Hero: trae tu lista ---------- */
+  #trae-tu-lista{position:relative;padding:72px 0 88px;overflow:hidden}
+  #trae-tu-lista::before{content:"";position:absolute;inset:-30% -10% auto auto;width:640px;height:640px;background:radial-gradient(circle,rgba(30,215,96,.28),transparent 65%);pointer-events:none}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+  .etiqueta{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--verde);margin-bottom:18px}
+  h1,h2{font-family:var(--display);letter-spacing:-.03em;line-height:1.05}
+  h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800}
+  h1 em{font-style:normal;color:var(--verde)}
+  h2{font-size:clamp(1.9rem,4.2vw,3rem);font-weight:700}
+  .bajada{font-size:1.15rem;color:var(--texto-2);margin:22px 0 32px;max-width:34ch}
+  .acciones{display:flex;flex-wrap:wrap;gap:14px}
+
+  .migrador{background:var(--negro-2);border:1px solid var(--borde);border-radius:28px;padding:24px}
+  .tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+  .tab{flex:1;min-width:140px;background:var(--negro-3);color:var(--texto-2);border:1px solid var(--borde);border-radius:14px;padding:12px;font:inherit;font-weight:700;cursor:pointer;transition:all .2s}
+  .tab small{display:block;font-weight:400;font-size:.78rem}
+  .tab[aria-selected="true"]{background:var(--texto);color:var(--negro);border-color:var(--texto)}
+  .flujo{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}
+  .caja{background:var(--negro-3);border-radius:16px;padding:14px;min-height:196px}
+  .caja h3{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--texto-2);margin-bottom:10px}
+  .caja.destino{border:1px dashed var(--verde)}
+  .caja.destino h3{color:var(--verde)}
+  .cancion{display:flex;align-items:center;gap:10px;background:var(--negro-2);border-radius:10px;padding:8px;margin-bottom:8px;font-size:.88rem;transition:opacity .35s,transform .35s}
+  .portada{flex:none;width:28px;height:28px;border-radius:6px}
+  .cancion.salio{opacity:.25}
+  .cancion.entra{animation:entra .45s ease both}
+  @keyframes entra{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+  .puente{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--verde);color:var(--negro);font-weight:800}
+  .barra{height:6px;background:var(--negro-3);border-radius:6px;margin:20px 0 12px;overflow:hidden}
+  .barra i{display:block;height:100%;width:0;background:var(--verde);transition:width .3s}
+  .migrador-pie{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:.88rem;color:var(--texto-2)}
+  .btn-demo{background:none;border:1px solid var(--borde);color:var(--texto);border-radius:999px;padding:8px 16px;font:inherit;font-weight:700;cursor:pointer}
+  .btn-demo:hover{border-color:var(--verde)}
+
+  /* ---------- Colores de marca de las apps de origen y grilla de videos ---------- */
+  :root{--yt:#ff0000;--yt-osc:#282828;--am-1:#fa233b;--am-2:#fb5c74}
+  .tab[data-origen="video"][aria-selected="true"]{background:var(--yt);color:#fff;border-color:var(--yt)}
+  .tab[data-origen="musica"][aria-selected="true"]{background:linear-gradient(135deg,var(--am-1),var(--am-2));color:#fff;border-color:var(--am-1)}
+  .migrador[data-origen="video"] .caja:not(.destino){border:1px solid var(--yt)}
+  .migrador[data-origen="video"] .caja:not(.destino) h3{color:var(--yt)}
+  .migrador[data-origen="musica"] .caja:not(.destino){border:1px solid var(--am-1)}
+  .migrador[data-origen="musica"] .caja:not(.destino) h3{color:var(--am-2)}
+  .videos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .video{font-size:.74rem;line-height:1.3;transition:opacity .35s}
+  .mini{position:relative;aspect-ratio:16/9;border-radius:8px;display:grid;place-items:center;margin-bottom:4px;overflow:hidden}
+  .mini::before{content:"";width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.92)}
+  .mini::after{content:"";position:absolute;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #111;margin-left:2px}
+  .mini i{position:absolute;right:4px;bottom:4px;font-style:normal;font-size:.62rem;font-weight:700;background:rgba(0,0,0,.75);color:#fff;padding:1px 4px;border-radius:3px}
+  .video.salio{opacity:.25}
+  .video.entra{animation:entra .45s ease both}
+
+  /* ---------- Promo 3 meses ---------- */
+  #tres-meses-gratis{padding:24px 0 88px}
+  .promo{position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;background:var(--verde);color:var(--negro);border-radius:32px;padding:48px;overflow:hidden}
+  .promo::after{content:"";position:absolute;right:-80px;bottom:-120px;width:320px;height:320px;border-radius:50%;border:40px solid rgba(10,10,10,.08)}
+  .promo-num{font-family:var(--display);font-weight:800;font-size:clamp(5rem,13vw,9rem);line-height:.85;letter-spacing:-.06em}
+  .promo-num small{display:block;font-size:.22em;letter-spacing:0;margin-top:8px}
+  .promo h2{margin-bottom:12px}
+  .promo p{font-size:1.1rem;max-width:42ch}
+  .promo .btn-primario{background:var(--negro);color:var(--verde);position:relative;z-index:1}
+  .promo .btn-primario:hover{background:#222}
+  .nota{font-size:.8rem;opacity:.75;margin-top:14px}
+
+  /* ---------- Acceso ilimitado ---------- */
+  #acceso-ilimitado{padding:24px 0 88px}
+  .titulo-seccion{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+  .titulo-seccion p{color:var(--texto-2);max-width:40ch}
+  .categorias{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .categoria{position:relative;aspect-ratio:3/4;border-radius:var(--radio);padding:18px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;scroll-margin-top:160px;transition:transform .25s}
+  .categoria:hover{transform:translateY(-6px) rotate(-1deg)}
+  .categoria h3{font-family:var(--display);font-size:1.15rem;font-weight:700}
+  .categoria p{font-size:.88rem;opacity:.85}
+  .categoria .forma{position:absolute;right:-18px;top:44px;width:96px;height:96px;opacity:.3}
+  .categoria p{position:relative}
+  .c1{background:#e13300}.c2{background:#1e3264}.c3{background:#8d67ab}.c4{background:#148a08}.c5{background:#503750}
+
+  /* ---------- Evidencia ---------- */
+  #evidencia{padding:24px 0 88px}
+  .pruebas{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .prueba{background:var(--negro-2);border:1px solid var(--borde);border-radius:var(--radio);padding:28px}
+  .prueba strong{display:block;font-family:var(--display);font-size:2rem;color:var(--verde);margin:12px 0 6px}
+  .prueba p{color:var(--texto-2);font-size:.95rem}
+
+  /* ---------- Cierre ---------- */
+  #cierre{padding:40px 0 100px;text-align:center}
+  #cierre h2{max-width:18ch;margin:0 auto 18px}
+  #cierre p{color:var(--texto-2);margin-bottom:32px}
+  #cierre .acciones{justify-content:center}
+
+  footer{border-top:1px solid var(--borde);padding:32px 0;color:var(--texto-2);font-size:.85rem}
+  .pie{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  /* ---------- Revelado al hacer scroll ---------- */
+  .revelar{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .revelar.visible{opacity:1;transform:none}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr}
+    .promo{grid-template-columns:1fr;padding:36px 28px;gap:20px}
+    .categorias{grid-template-columns:repeat(3,1fr)}
+    .pruebas{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    header{position:relative}
+    .categoria{aspect-ratio:auto;min-height:170px}
+    .busqueda-fila{justify-content:stretch}
+    .busqueda{width:100%}
+    .marca-fila{flex-direction:column;align-items:flex-start;gap:10px;padding:10px 0 12px}
+    nav{width:100%}
+    nav a{padding:6px 12px;font-size:.92rem}
+    #trae-tu-lista{padding:44px 0 64px}
+    .flujo{grid-template-columns:1fr;justify-items:stretch}
+    .puente{justify-self:center;transform:rotate(90deg)}
+    .caja{min-height:auto}
+    .categorias{grid-template-columns:repeat(2,1fr)}
+    .acciones .btn{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+    .revelar{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="contenedor">
+    <!-- 1. Barra de búsqueda -->
+    <div class="busqueda-fila">
+      <div class="busqueda" role="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <label for="buscar" class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Buscar en Spotify</label>
+        <input id="buscar" type="search" placeholder="Busca tus ritmos favoritos..." autocomplete="off">
+        <button type="button" id="btn-buscar">Buscar</button>
+      </div>
+    </div>
+
+    <div class="marca-fila">
+      <!-- 2. Logo -->
+      <a href="#trae-tu-lista" class="logo" aria-label="Spotify, ir al inicio">
+        <span class="logo-icono" aria-hidden="true"><div><span></span><span></span><span></span></div></span>
+        Spotify
+      </a>
+      <!-- 3. Secciones de la app -->
+      <nav aria-label="Secciones de la app">
+        <ul>
+          <li><a href="#nuevos">Nuevos</a></li>
+          <li><a href="#musica">Música</a></li>
+          <li><a href="#videos">Videos</a></li>
+          <li><a href="#playlist">Playlist</a></li>
+          <li><a href="#podcasts">Podcasts</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- 4. Trae tu lista desde tu app favorita -->
+  <section id="trae-tu-lista" aria-labelledby="titulo-hero">
+    <div class="contenedor hero-grid">
+      <div>
+        <span class="etiqueta">Música para todos</span>
+        <h1 id="titulo-hero">¡Trae tu lista desde tu <em>app favorita</em>!</h1>
+        <p class="bajada">Tus canciones no se quedan atrás. Pasa tus listas de reproducción a Spotify y sigue escuchando todo, sin límites.</p>
+        <div class="acciones">
+          <a id="cta-principal" class="btn btn-primario" href="https://www.spotify.com" target="_blank" rel="noopener">Ir a Spotify <span class="flecha" aria-hidden="true">→</span></a>
+          <a class="btn btn-secundario" href="#tres-meses-gratis">Obtener 3 meses gratis</a>
+        </div>
+      </div>
+
+      <div class="migrador" data-origen="video" aria-label="Simulación de cómo se traen las listas">
+        <div class="tabs" role="tablist" aria-label="Elige tu app de origen">
+          <button class="tab" role="tab" aria-selected="true" data-origen="video">YouTube Music<small>Lista de reproducción</small></button>
+          <button class="tab" role="tab" aria-selected="false" data-origen="musica">Apple Music<small>Playlist favorita</small></button>
+        </div>
+        <div class="flujo">
+          <div class="caja">
+            <h3 id="nombre-origen">Tu otra app</h3>
+            <div id="lista-origen" class="videos"></div>
+          </div>
+          <div class="puente" aria-hidden="true">→</div>
+          <div class="caja destino">
+            <h3>Spotify</h3>
+            <div id="lista-destino" class="videos" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="barra" aria-hidden="true"><i id="progreso"></i></div>
+        <div class="migrador-pie">
+          <span id="estado">Simulación · videos de ejemplo</span>
+          <button class="btn-demo" id="btn-demo" type="button">▶ Ver cómo funciona</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Obtén 3 meses gratis -->
+  <section id="tres-meses-gratis" aria-labelledby="titulo-promo">
+    <div class="contenedor">
+      <div class="promo revelar">
+        <div class="promo-num" aria-hidden="true">3<small>meses gratis</small></div>
+        <div>
+          <h2 id="titulo-promo">Obtén 3 meses gratis este 2027*</h2>
+          <p>Una sola suscripción, música ilimitada. Prueba Premium sin pagar nada durante tres meses y quédate solo si te gusta.</p>
+          <p class="nota">*Texto de condiciones de ejemplo: reemplazar por los términos reales de la promoción.</p>
+        </div>
+        <a class="btn btn-primario" href="https://www.spotify.com/premium/" target="_blank" rel="noopener">Obtener 3 meses gratis <span class="flecha" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Acceso ilimitado: destino de las secciones de la app -->
+  <section id="acceso-ilimitado" aria-labelledby="titulo-acceso">
+    <div class="contenedor">
+      <div class="titulo-seccion revelar">
+        <h2 id="titulo-acceso">Todo en un<br>solo lugar</h2>
+        <p>Música, videos, playlists y podcasts con una sola suscripción. Sin saltar de app en app.</p>
+      </div>
+      <div class="categorias">
+        <article class="categoria c1 revelar" id="nuevos"><h3>Nuevos</h3><p>Los lanzamientos de la semana, apenas salen.</p><svg class="forma" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,0 61,38 100,38 69,61 80,100 50,76 20,100 31,61 0,38 39,38" fill="#fff"/></svg></article>
+        <article class="categoria c2 revelar" id="musica"><h3>Música</h3><p>Tus artistas favoritos y los que aún no conoces.</p><svg class="forma" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#fff"/><circle cx="50" cy="50" r="12" fill="#1e3264"/></svg></article>
+        <article class="categoria c3 revelar" id="videos"><h3>Videos</h3><p>Mira y escucha en el mismo lugar.</p><svg class="forma" viewBox="0 0 100 100" aria-hidden="true"><polygon points="15,5 95,50 15,95" fill="#fff"/></svg></article>
+        <article class="categoria c4 revelar" id="playlist"><h3>Playlist</h3><p>Las tuyas, las que traes y las que armamos para ti.</p><svg class="forma" viewBox="0 0 100 100" aria-hidden="true"><rect x="0" y="10" width="100" height="16" rx="8" fill="#fff"/><rect x="0" y="42" width="80" height="16" rx="8" fill="#fff"/><rect x="0" y="74" width="60" height="16" rx="8" fill="#fff"/></svg></article>
+        <article class="categoria c5 revelar" id="podcasts"><h3>Podcasts</h3><p>Historias, humor y conversación para cada momento.</p><svg class="forma" viewBox="0 0 100 100" aria-hidden="true"><rect x="32" y="0" width="36" height="64" rx="18" fill="#fff"/><rect x="46" y="70" width="8" height="30" fill="#fff"/></svg></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Evidencia (contenido de ejemplo) -->
+  <section id="evidencia" aria-labelledby="titulo-evidencia">
+    <div class="contenedor">
+      <div class="titulo-seccion revelar">
+        <h2 id="titulo-evidencia">¿Por qué Spotify?</h2>
+        <p><span class="ejemplo">Contenido de ejemplo</span> Reemplazar con datos verificados antes de publicar.</p>
+      </div>
+      <div class="pruebas">
+        <div class="prueba revelar"><span class="ejemplo">Ejemplo</span><strong>[CIFRA]</strong><p>[EVIDENCIA] Tamaño del catálogo de canciones disponible.</p></div>
+        <div class="prueba revelar"><span class="ejemplo">Ejemplo</span><strong>[CIFRA]</strong><p>[EVIDENCIA] Cantidad de podcasts y videos incluidos.</p></div>
+        <div class="prueba revelar"><span class="ejemplo">Ejemplo</span><strong>[DATO]</strong><p>[EVIDENCIA] Tiempo promedio para traer una lista desde otra app.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cierre -->
+  <section id="cierre" aria-labelledby="titulo-cierre">
+    <div class="contenedor revelar">
+      <h2 id="titulo-cierre">Tu música, sin límites y para todos.</h2>
+      <p>Trae tus listas, activa tus 3 meses gratis y dale play.</p>
+      <div class="acciones">
+        <a class="btn btn-primario cta-principal" href="https://www.spotify.com" target="_blank" rel="noopener">Ir a Spotify <span class="flecha" aria-hidden="true">→</span></a>
+        <a class="btn btn-secundario" href="https://www.spotify.com/premium/" target="_blank" rel="noopener">Obtener 3 meses gratis</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="contenedor pie">
+    <span>Spotify · Música para todos</span>
+    <span>*Términos y condiciones de ejemplo. Página de campaña en borrador.</span>
+  </div>
+</footer>
+
+<script>
+  // ---------- Búsqueda: abre los resultados en Spotify ----------
+  const inputBuscar = document.getElementById('buscar');
+  function buscar(){
+    const q = inputBuscar.value.trim();
+    if(!q){ inputBuscar.focus(); return; }
+    window.open('https://open.spotify.com/search/' + encodeURIComponent(q), '_blank', 'noopener');
+  }
+  document.getElementById('btn-buscar').addEventListener('click', buscar);
+  inputBuscar.addEventListener('keydown', e => { if(e.key === 'Enter') buscar(); });
+
+  // ---------- Simulación de migración (canciones de ejemplo) ----------
+  const listas = {
+    video: { nombre:'YouTube Music', canciones:['Video de ejemplo 1','Video de ejemplo 2','Video de ejemplo 3','Video de ejemplo 4'],
+             colores:['linear-gradient(135deg,#ff0000,#8b0000)','linear-gradient(135deg,#282828,#ff0000)','linear-gradient(135deg,#ff4e45,#282828)','linear-gradient(135deg,#cc0000,#212121)'] },
+    musica:{ nombre:'Apple Music',   canciones:['Video de ejemplo A','Video de ejemplo B','Video de ejemplo C','Video de ejemplo D'],
+             colores:['linear-gradient(135deg,#fa233b,#fb5c74)','linear-gradient(135deg,#fb5c74,#2a2a2a)','linear-gradient(135deg,#d60017,#fa233b)','linear-gradient(135deg,#2a2a2a,#fa233b)'] }
+  };
+  const duraciones = ['3:24','4:02','2:51','3:47'];
+  const elMigrador = document.querySelector('.migrador');
+  const elOrigen = document.getElementById('lista-origen');
+  const elDestino = document.getElementById('lista-destino');
+  const elNombre = document.getElementById('nombre-origen');
+  const elProgreso = document.getElementById('progreso');
+  const elEstado = document.getElementById('estado');
+  const btnDemo = document.getElementById('btn-demo');
+  let origenActual = 'video', timers = [];
+
+  function fila(texto, i){
+    const d = document.createElement('div');
+    d.className = 'video';
+    d.innerHTML = '<div class="mini" style="background:' + listas[origenActual].colores[i % 4] + '"><i>' + duraciones[i % 4] + '</i></div>' + texto;
+    return d;
+  }
+  function pintar(){
+    timers.forEach(clearTimeout); timers = [];
+    const l = listas[origenActual];
+    elMigrador.dataset.origen = origenActual;
+    elNombre.textContent = l.nombre;
+    elOrigen.innerHTML = ''; elDestino.innerHTML = '';
+    l.canciones.forEach((c,i) => elOrigen.appendChild(fila(c,i)));
+    elProgreso.style.width = '0';
+    elEstado.textContent = 'Simulación · videos de ejemplo';
+    btnDemo.disabled = false;
+  }
+  function migrar(){
+    pintar();
+    btnDemo.disabled = true;
+    const l = listas[origenActual], filas = elOrigen.children;
+    l.canciones.forEach((c,i) => {
+      timers.push(setTimeout(() => {
+        filas[i].classList.add('salio');
+        const n = fila(c,i); n.classList.add('entra');
+        elDestino.appendChild(n);
+        elProgreso.style.width = ((i + 1) / l.canciones.length * 100) + '%';
+        elEstado.textContent = (i + 1) + ' de ' + l.canciones.length + ' videos traídos';
+        if(i === l.canciones.length - 1){
+          elEstado.textContent = '¡Listo! Tu lista ya está en Spotify';
+          btnDemo.disabled = false; btnDemo.textContent = '↺ Repetir';
+        }
+      }, 500 + i * 600));
+    });
+  }
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected','false'));
+    t.setAttribute('aria-selected','true');
+    origenActual = t.dataset.origen;
+    btnDemo.textContent = '▶ Ver cómo funciona';
+    pintar();
+  }));
+  btnDemo.addEventListener('click', migrar);
+  pintar();
+
+  // ---------- Revelado al hacer scroll ----------
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(entradas => {
+    entradas.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: .15 }) : null;
+  document.querySelectorAll('.revelar').forEach(el => io ? io.observe(el) : el.classList.add('visible'));
+</script>
+<script>
+  // ---------- Medición: clic en el CTA principal ----------
+  window.dataLayer = window.dataLayer || [];
+  document.querySelectorAll('#cta-principal, .cta-principal').forEach(function(boton){
+    boton.addEventListener('click', function(){
+      var seccion = boton.closest('section');
+      window.dataLayer.push({
+        event: 'clic_cta_principal',
+        ubicacion: seccion ? seccion.id : 'sin_seccion'
+      });
+    });
+  });
+</script>
+</body>
+</html>
